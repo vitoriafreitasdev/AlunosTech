@@ -43,14 +43,16 @@ public partial class App : System.Windows.Application
         // Repositories
         services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
         services.AddScoped<IProjetosRepository, ProjetosRepository>();
-
+        services.AddScoped<IAlunosRepository, AlunosRepository>();
         // UseCases
         services.AddScoped<ColaboradorUseCases>();
         services.AddScoped<ProjetosUseCases>();
+        services.AddScoped<AlunosUseCases>();
 
         // ViewModels
         services.AddScoped<ColaboradorViewModel>();
         services.AddScoped<ProjetosViewModel>();
+        services.AddScoped<AlunosViewModel>();
 
         // Views
         services.AddScoped<MainWindow>();

@@ -1,0 +1,160 @@
+<UserControl x:Class="Presentation.Views.AlunosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Background="#F4F6F9">
+
+        <TabControl Grid.Row="1"
+                    Margin="25,0,25,25"
+                    FontSize="14"
+                    SelectionChanged="TabControl_SelectionChanged">
+
+            <!-- CADASTRO -->
+            <TabItem Header="Cadastrar aluno">
+
+                <Grid Margin="25">
+
+                    <StackPanel Width="450"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top">
+
+                        <TextBlock Text="Cadastro de alunos"
+                                   FontSize="22"
+                                   FontWeight="Bold"
+                                   Margin="0,0,0,20"/>
+
+                        <TextBlock Text="Nome do aluno"/>
+
+                        <TextBox Text="{Binding Nome, UpdateSourceTrigger=PropertyChanged}"
+                                 Height="35"
+                                 Margin="0,5,0,15"/>
+
+                        <TextBlock Text="E-mail"/>
+
+                        <TextBox Text="{Binding Email, UpdateSourceTrigger=PropertyChanged}"
+                                 Height="35"
+                                 Margin="0,5,0,15"/>
+
+                        <TextBlock Text="Ano letivo"/>
+
+                        <TextBox Text="{Binding AnoLetivo, UpdateSourceTrigger=PropertyChanged}"
+                                 Height="35"
+                                 Margin="0,5,0,15"/>
+
+                        <TextBlock Text="Desempenho"/>
+
+                        <ComboBox ItemsSource="{Binding CategoriasDesempenho}"
+                                  SelectedItem="{Binding Desempenho}"
+                                  Height="35"
+                                  Margin="0,5,0,15"
+                                  DisplayMemberPath="."/>
+
+                        <TextBlock Text="Data de matrícula"/>
+
+                        <DatePicker SelectedDate="{Binding DataDeMatriculacao}"
+                                    Height="35"
+                                    Margin="0,5,0,20"/>
+
+                        <Button Content="Cadastrar aluno"
+                                Command="{Binding CadastrarAlunoCommand}"
+                                Height="40"
+                                Background="#1976D2"
+                                Foreground="White"
+                                FontWeight="Bold"
+                                Cursor="Hand"/>
+
+                        <TextBlock Text="{Binding Mensagem}"
+                                   Margin="0,15,0,0"
+                                   TextWrapping="Wrap"/>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </TabItem>
+
+            <!-- LISTAGEM -->
+            <TabItem Header="Alunos cadastrados">
+
+                <Grid Margin="20">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <!-- CABEÇALHO -->
+
+                    <DockPanel Margin="0,0,0,15">
+
+                        <TextBlock Text="Alunos matriculados"
+                                   FontSize="21"
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center"/>
+
+                        <Button Content="Atualizar lista"
+                                Command="{Binding CarregarAlunosCommand}"
+                                Width="130"
+                                Height="35"
+                                DockPanel.Dock="Right"
+                                Background="#1976D2"
+                                Foreground="White"
+                                Cursor="Hand"/>
+
+                    </DockPanel>
+
+                    <!-- TABELA -->
+
+                    <DataGrid Grid.Row="1"
+                              ItemsSource="{Binding Alunos}"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              SelectionMode="Single"
+                              HeadersVisibility="Column"
+                              AlternatingRowBackground="#EDF2F7"
+                              GridLinesVisibility="Horizontal">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Nome"
+                                                Binding="{Binding Nome}"
+                                                Width="2*"/>
+
+                            <DataGridTextColumn Header="E-mail"
+                                                Binding="{Binding Email}"
+                                                Width="2*"/>
+
+                            <DataGridTextColumn Header="Ano letivo"
+                                                Binding="{Binding AnoLetivo}"
+                                                Width="*"/>
+
+                            <DataGridTextColumn Header="Desempenho"
+                                                Binding="{Binding Desempenho}"
+                                                Width="*"/>
+
+                            <DataGridTextColumn Header="Data de matrícula"
+                                                Binding="{Binding DataDeMatriculacao, StringFormat={}{0:dd/MM/yyyy}}"
+                                                Width="*"/>
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                    <!-- MENSAGEM -->
+
+                    <TextBlock Grid.Row="2"
+                               Text="{Binding Mensagem}"
+                               Margin="0,12,0,0"
+                               TextWrapping="Wrap"/>
+
+                </Grid>
+
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+
+</UserControl>
