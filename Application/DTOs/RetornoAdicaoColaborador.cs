@@ -7,7 +7,6 @@ namespace Application.DTOs
     public record RetornoAdicaoColaborador
     {
         public bool adicionado { get; init; }
-
         public string? mensagem { get; init; }
 
     }

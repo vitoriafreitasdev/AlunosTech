@@ -1,12 +1,98 @@
-﻿<Window x:Class="Presentation.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Presentation"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+<Window x:Class="Presentation.MainWindow"
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	Title="Alunos Tech"
+	Height="750"
+	Width="1100"
+	MinHeight="600"
+	MinWidth="850"
+	WindowStartupLocation="CenterScreen">
 
-    </Grid>
+	<Grid Background="#F4F6F9">
+
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<!-- CABEÇALHO -->
+		<StackPanel Grid.Row="0"
+                    Margin="25,20,25,10">
+
+			<TextBlock Text="ALUNOS TECH"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Foreground="#263238"/>
+
+			<TextBlock Text="Sistema de Gestão Interna"
+                       FontSize="14"
+                       Foreground="#607D8B"/>
+
+		</StackPanel>
+
+		<!-- ÁREA PRINCIPAL -->
+		<Grid Grid.Row="1"
+              Margin="20,10,20,20">
+
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="180"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<!-- MENU LATERAL -->
+			<Border Grid.Column="0"
+                    Background="White"
+                    BorderBrush="#DCE1E8"
+                    BorderThickness="1"
+                    CornerRadius="6"
+                    Padding="10">
+
+				<StackPanel>
+
+					<TextBlock Text="MENU"
+                               FontSize="13"
+                               FontWeight="Bold"
+                               Foreground="#607D8B"
+                               Margin="5,5,5,15"/>
+
+					<Button Content="Gestão de Colaboradores"
+                            Click="Colaboradores_Click"
+                            Height="45"
+                            Margin="0,0,0,10"
+                            Background="#1976D2"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="SemiBold"
+                            Cursor="Hand"/>
+
+					<Button Content="Gestão de Projetos"
+                            Click="Projetos_Click"
+                            Height="45"
+                            Background="#1976D2"
+                            Foreground="White"
+                            BorderThickness="0"
+                            FontWeight="SemiBold"
+                            Cursor="Hand"/>
+
+				</StackPanel>
+
+			</Border>
+
+			<!-- CONTEÚDO DA TELA SELECIONADA -->
+			<Border Grid.Column="1"
+                    Margin="15,0,0,0"
+                    Background="White"
+                    BorderBrush="#DCE1E8"
+                    BorderThickness="1"
+                    CornerRadius="6"
+                    Padding="10">
+
+				<ContentControl x:Name="MainContent"/>
+
+			</Border>
+
+		</Grid>
+
+	</Grid>
+
 </Window>

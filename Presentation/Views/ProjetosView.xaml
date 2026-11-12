@@ -1,0 +1,129 @@
+<UserControl x:Class="Presentation.Views.ProjetosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Grid Background="#F4F6F9">
+
+        <TabControl Grid.Row="1"
+                Margin="25,0,25,25"
+                FontSize="14">
+
+            <!-- CADASTRO -->
+            <TabItem Header="Cadastrar projeto">
+
+                <Grid Margin="25">
+
+                    <StackPanel Width="450"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Top">
+
+                        <TextBlock Text="Cadastro de projetos"
+                                   FontSize="22"
+                                   FontWeight="Bold"
+                                   Margin="0,0,0,20"/>
+
+                        <TextBlock Text="Nome do projeto"/>
+
+                        <TextBox Text="{Binding Nome, UpdateSourceTrigger=PropertyChanged}"
+                                 Height="35"
+                                 Margin="0,5,0,15"/>
+
+                        <TextBlock Text="Descrição"/>
+
+                        <TextBox Text="{Binding Descricao, UpdateSourceTrigger=PropertyChanged}"
+                                 Height="90"
+                                 AcceptsReturn="True"
+                                 TextWrapping="Wrap"
+                                 VerticalScrollBarVisibility="Auto"
+                                 Margin="0,5,0,15"/>
+
+                        <TextBlock Text="Data de entrega"/>
+
+                        <DatePicker SelectedDate="{Binding DataDeEntrega}"
+                                    Height="35"
+                                    Margin="0,5,0,20"/>
+
+                        <Button Content="Cadastrar projeto"
+                                Command="{Binding CadastrarProjetoCommand}"
+                                Height="40"
+                                Background="#1976D2"
+                                Foreground="White"
+                                FontWeight="Bold"/>
+
+                        <TextBlock Text="{Binding Mensagem}"
+                                   Margin="0,15,0,0"
+                                   TextWrapping="Wrap"/>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </TabItem>
+
+            <!-- LISTAGEM -->
+            <TabItem Header="Projetos cadastrados">
+
+                <Grid Margin="20">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <DockPanel Margin="0,0,0,15">
+
+                        <TextBlock Text="Projetos registrados"
+                                   FontSize="21"
+                                   FontWeight="Bold"
+                                   VerticalAlignment="Center"/>
+
+                        <Button Content="Atualizar lista"
+                                Command="{Binding CarregarProjetosCommand}"
+                                Width="130"
+                                Height="35"
+                                DockPanel.Dock="Right"
+                                Background="#1976D2"
+                                Foreground="White"/>
+
+                    </DockPanel>
+
+                    <DataGrid Grid.Row="1"
+                              ItemsSource="{Binding Projetos}"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False"
+                              AlternatingRowBackground="#EDF2F7"
+                              GridLinesVisibility="Horizontal">
+
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Nome"
+                                                Binding="{Binding Nome}"
+                                                Width="2*"/>
+
+                            <DataGridTextColumn Header="Descrição"
+                                                Binding="{Binding Descricao}"
+                                                Width="3*"/>
+
+                            <DataGridTextColumn Header="Data de entrega"
+                                                Binding="{Binding DataDeEntrega, StringFormat={}{0:dd/MM/yyyy}}"
+                                                Width="*"/>
+
+                        </DataGrid.Columns>
+
+                    </DataGrid>
+
+                    <TextBlock Grid.Row="2"
+                               Text="{Binding Mensagem}"
+                               Margin="0,12,0,0"/>
+
+                </Grid>
+
+            </TabItem>
+
+        </TabControl>
+
+    </Grid>
+
+</UserControl>

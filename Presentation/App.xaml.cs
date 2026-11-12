@@ -40,30 +40,28 @@ public partial class App : System.Windows.Application
         // Banco de dados
         services.AddDbContext<AppDbContext>(options =>
             options.UseSqlServer(sqlstring));
+        // Repositories
+        services.AddScoped<IColaboradorRepository, ColaboradorRepository>();
+        services.AddScoped<IProjetosRepository, ProjetosRepository>();
 
-        // Infrastructure
-        services.AddScoped<
-            IColaboradorRepository,
-            ColaboradorRepository>();
-
-        // Application
+        // UseCases
         services.AddScoped<ColaboradorUseCases>();
+        services.AddScoped<ProjetosUseCases>();
 
-        // Presentation
+        // ViewModels
         services.AddScoped<ColaboradorViewModel>();
-        services.AddScoped<ColaboradorView>();
+        services.AddScoped<ProjetosViewModel>();
 
+        // Views
+        services.AddScoped<MainWindow>();
         // Construção das dependências
         _serviceProvider = services.BuildServiceProvider();
 
-        // Criando um escopo para a janela
         var scope = _serviceProvider.CreateScope();
 
-        // Obtendo a View
-        var window = scope.ServiceProvider
-            .GetRequiredService<ColaboradorView>();
+        var window = scope.ServiceProvider.GetRequiredService<MainWindow>();
 
-        window.Closed += (s, args) => scope.Dispose();
+        window.Closed += (s, e) => scope.Dispose();
 
         window.Show();
     }
