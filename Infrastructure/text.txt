@@ -1,0 +1,47 @@
+          PRESENTATION
+               |
+               v
+          APPLICATION
+               |
+               v
+             DOMAIN
+               ^
+               |
+          APPLICATION
+               ^
+               |
+         INFRASTRUCTURE
+
+    AlunosTech/
+│
+├── AlunosTech.Presentation/
+│   ├── Views/
+│   │   ├── LoginWindow.xaml
+│   │   ├── DashboardWindow.xaml
+│   │   ├── ColaboradoresWindow.xaml
+│   │   └── ProjetosWindow.xaml
+│   │
+│   ├── ViewModels/
+│   └── App.xaml
+│
+├── AlunosTech.Application/
+│   ├── Interfaces/
+│   ├── DTOs/
+│   └── UseCases/
+│       ├── CadastrarColaborador.cs
+│       ├── ConsultarColaboradores.cs
+│       └── CadastrarProjeto.cs
+│
+├── AlunosTech.Domain/
+│   ├── Entities/
+│   ├── Enums/
+│   └── Interfaces/
+│
+├── AlunosTech.Infrastructure/
+│   ├── Data/
+│   ├── Repositories/
+│   └── Configurations/
+│
+└── AlunosTech.Tests/
+    ├── Unit/
+    └── Integration/

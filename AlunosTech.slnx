@@ -1,1 +1,10 @@
-<Solution />
+<Solution>
+  <Folder Name="/Itens de Solução/">
+    <File Path=".env" />
+  </Folder>
+  <Project Path="Application/Application.csproj" Id="63323e3a-4eb8-4289-8775-44a643f40392" />
+  <Project Path="Domain/Domain.csproj" Id="ff7c0722-f2b1-4acc-91b3-c934a68497a1" />
+  <Project Path="Infrastructure/Infrastructure.csproj" Id="97d3e0f1-328f-4058-9036-d9927b6e1ea3" />
+  <Project Path="Presentation/Presentation.csproj" Id="c8dc159b-289e-4aae-a81c-2310f4794bbc" />
+  <Project Path="Tests/Tests.csproj" Id="289b0829-eb5a-454d-a9ed-26a972f4a820" />
+</Solution>
